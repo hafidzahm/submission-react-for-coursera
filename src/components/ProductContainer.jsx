@@ -7,6 +7,7 @@ const ProductContainer = () => {
   const cart = useSelector((state) => state.cart.items);
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(false);
+  const cartQuantity = useSelector((state) => state.cart.items.reduce((total, item) => total + item.quantity, 0));
   const handleCartClick = (e) => {
     e.preventDefault();
     setShowCart(true); // Set showCart to true when cart icon is clicked
@@ -85,7 +86,7 @@ const ProductContainer = () => {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
-                <span className="cart-quantity">{cart.length}</span>
+                <span className="cart-quantity">{cartQuantity}</span>
               </h1>
             </a>
           </div>
