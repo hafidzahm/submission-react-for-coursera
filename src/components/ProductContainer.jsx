@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
 import CartItem from './CartItem';
 import ProductGrid from './ProductGrid';
 import { useState } from 'react';
 
 const ProductContainer = () => {
+  const cart = useSelector((state) => state.cart.items);
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(false);
   const handleCartClick = (e) => {
@@ -83,7 +85,7 @@ const ProductContainer = () => {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
-                <span className="cart-quantity"></span>
+                <span className="cart-quantity">{cart.length}</span>
               </h1>
             </a>
           </div>
