@@ -4,7 +4,7 @@ const plants = [
     plants: [
       {
         name: 'Frizzle Sizzle (Albuca spiralis)',
-        img: './frizzle-sizzle.jpg',
+        img: './frizzle-size.jpg',
         description:
           'The Frizzle Sizzle is a delightful plant that has a fun and cool name. It also looks like something out of an animated cartoon because of its green corkscrew appearance. Admired for its sculptural, almost architectural look, the Albuca features spiraling leaves that are thick and curly.',
         price: 25,
