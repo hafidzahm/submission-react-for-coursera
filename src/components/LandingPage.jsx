@@ -1,3 +1,5 @@
+import AboutUs from './AboutUs';
+
 const LandingPage = () => {
   return (
     <div className="landing-page">
@@ -12,7 +14,9 @@ const LandingPage = () => {
           <button className="get-started-button">Get Started</button>
         </div>
 
-        <div className="aboutus_container"></div>
+        <div className="aboutus_container">
+          <AboutUs />
+        </div>
       </div>
     </div>
   );
