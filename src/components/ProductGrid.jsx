@@ -17,7 +17,7 @@ const ProductGrid = () => {
                     </div>
                     <div className="product-title">{plant.name}</div>
                     <p>{plant.description}</p>
-                    <p>${plant.price}</p>
+                    <p>Price: ${plant.price}</p>
                     <button className="product-button">Add To Cart</button>
                   </div>
                 ))}
