@@ -18,6 +18,10 @@ const CartItem = ({ onContinueShopping }) => {
   const handleContinueShopping = (event) => {
     onContinueShopping(event);
   };
+
+  const handleCheckoutShopping = (e) => {
+    alert('Feature is coming soon!');
+  };
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
@@ -50,7 +54,9 @@ const CartItem = ({ onContinueShopping }) => {
           Continue Shopping
         </button>
         <br />
-        <button className="get-started-button1">Checkout</button>
+        <button className="get-started-button1" onClick={handleCheckoutShopping}>
+          Checkout
+        </button>
       </div>
     </div>
   );
