@@ -14,6 +14,10 @@ const ProductContainer = () => {
     setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
     setShowCart(false); // Hide the cart when navigating to About Us
   };
+  const handleContinueShopping = (event) => {
+    event.preventDefault();
+    setShowCart(false);
+  };
 
   const styleObj = {
     backgroundColor: '#4CAF50',
@@ -85,7 +89,7 @@ const ProductContainer = () => {
           </div>
         </div>
       </div>
-      {!showCart ? <ProductGrid /> : <CartItem />}
+      {!showCart ? <ProductGrid /> : <CartItem onContinueShopping={handleContinueShopping} />}
     </div>
   );
 };

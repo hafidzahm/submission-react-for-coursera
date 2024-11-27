@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import './CartItem.css';
 
-const CartItem = () => {
+const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
   const calculateTotalAmount = (item) => {
     let totalAmount = 0;
@@ -13,6 +13,10 @@ const CartItem = () => {
 
   const calculateTotalCost = (item) => {
     return item.price * item.quantity;
+  };
+
+  const handleContinueShopping = (event) => {
+    onContinueShopping(event);
   };
   return (
     <div className="cart-container">
@@ -42,7 +46,9 @@ const CartItem = () => {
       </div>
       <div style={{ marginTop: '20px', color: 'black' }} className="total_cart_amount"></div>
       <div className="continue_shopping_btn">
-        <button className="get-started-button">Continue Shopping</button>
+        <button className="get-started-button" onClick={handleContinueShopping}>
+          Continue Shopping
+        </button>
         <br />
         <button className="get-started-button1">Checkout</button>
       </div>
