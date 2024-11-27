@@ -1,7 +1,20 @@
 import plants from './unique-plants';
 import './ProductGrid.css';
+import { addToCart } from '../redux/CartSlice';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 const ProductGrid = () => {
+  const [addedToCart, setAddedToCart] = useState({});
+  const dispatch = useDispatch();
   const plantsArray = plants;
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    setAddedToCart((prevState) => ({
+      ...prevState,
+      [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart.
+    }));
+  };
   return (
     <div className="product-grid">
       {plantsArray.map((category, index) => (
@@ -18,7 +31,13 @@ const ProductGrid = () => {
                     <div className="product-title">{plant.name}</div>
                     <p>{plant.description}</p>
                     <p>Price: ${plant.price}</p>
-                    <button className="product-button">Add To Cart</button>
+                    <button
+                      className={addedToCart[plant.name] ? 'product-button-disabled' : 'product-button'}
+                      onClick={() => handleAddToCart(plant)}
+                      disabled={addedToCart[plant.name]}
+                    >
+                      {addedToCart[plant.name] ? 'Added to cart' : 'add to cart'}
+                    </button>
                   </div>
                 ))}
               </div>
