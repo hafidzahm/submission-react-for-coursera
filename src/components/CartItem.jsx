@@ -10,6 +10,10 @@ const CartItem = () => {
     });
     return totalAmount;
   };
+
+  const calculateTotalCost = (item) => {
+    return item.price * item.quantity;
+  };
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
@@ -30,7 +34,7 @@ const CartItem = () => {
                 <span className="cart-item-quantity-value"></span>
                 <button className="cart-item-button cart-item-button-inc">+</button>
               </div>
-              <div className="cart-item-total">Total: </div>
+              <div className="cart-item-total">Total: ${calculateTotalCost(item)} </div>
               <button className="cart-item-delete">Delete</button>
             </div>
           </div>
