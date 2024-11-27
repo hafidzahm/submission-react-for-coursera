@@ -3,9 +3,16 @@ import './CartItem.css';
 
 const CartItem = () => {
   const cart = useSelector((state) => state.cart.items);
+  const calculateTotalAmount = (item) => {
+    let totalAmount = 0;
+    cart.forEach((item) => {
+      totalAmount += item.quantity * item.price;
+    });
+    return totalAmount;
+  };
   return (
     <div className="cart-container">
-      <h2 style={{ color: 'black' }}>Total Cart Amount: </h2>
+      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
       <div>
         {cart.map((item) => (
           <div className="cart-item" key={item.name}>
