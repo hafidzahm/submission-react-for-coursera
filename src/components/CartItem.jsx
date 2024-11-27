@@ -1,8 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './CartItem.css';
+import { updateQuantity } from '../redux/CartSlice';
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
   const calculateTotalAmount = (item) => {
     let totalAmount = 0;
     cart.forEach((item) => {
@@ -22,6 +24,10 @@ const CartItem = ({ onContinueShopping }) => {
   const handleCheckoutShopping = (e) => {
     alert('Feature is coming soon!');
   };
+
+  const handleItemIncrement = (item) => {
+    dispatch(updateQuantity({ ...item, quantity: item.quantity + 1 }));
+  };
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
@@ -40,7 +46,9 @@ const CartItem = ({ onContinueShopping }) => {
               <div className="cart-item-quantity">
                 <button className="cart-item-button cart-item-button-dec">-</button>
                 <span className="cart-item-quantity-value"></span>
-                <button className="cart-item-button cart-item-button-inc">+</button>
+                <button className="cart-item-button cart-item-button-inc" onClick={() => handleItemIncrement(item)}>
+                  +
+                </button>
               </div>
               <div className="cart-item-total">Total: ${calculateTotalCost(item)} </div>
               <button className="cart-item-delete">Delete</button>
