@@ -36,6 +36,10 @@ const CartItem = ({ onContinueShopping }) => {
       dispatch(updateQuantity({ ...item, quantity: item.quantity - 1 }));
     }
   };
+
+  const handleRemoveItem = (item) => {
+    dispatch(removeItem(item));
+  };
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
@@ -61,7 +65,9 @@ const CartItem = ({ onContinueShopping }) => {
                 </button>
               </div>
               <div className="cart-item-total">Total: ${calculateTotalCost(item)} </div>
-              <button className="cart-item-delete">Delete</button>
+              <button className="cart-item-delete" onClick={() => handleRemoveItem(item)}>
+                Delete
+              </button>
             </div>
           </div>
         ))}
